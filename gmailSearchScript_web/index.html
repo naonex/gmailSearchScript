@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <input type="text" value="list:(<aaa_prometheusProd_alert.aaa-system.co.jp>) after:2019/09/01 before:2019/09/07" id="searchQuery">
+    <input type="button" value="テスト" onClick="changeMessage()" id="button1">
+    <div id="表示場所">結果がここに表示されます。</div>
+  </body>
+  <script>
+  function changeMessage() {
+    //document.getElementById('表示場所').textContent = document.getElementById('searchQuery').value;
+    
+    //google.script.run.outputMail2(document.getElementById('searchQuery').value);
+    document.getElementById("button1").disabled = true;
+    google.script.run.withSuccessHandler(textAdd).outputMail2(document.getElementById('searchQuery').value);
+    
+  }
+  function textAdd(text) {
+    document.getElementById('表示場所').textContent = text;
+    document.getElementById("button1").disabled = false;
+    
+  }
+  </script>
+</html>
